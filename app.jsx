@@ -2,13 +2,16 @@ var App = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
     return {
-      posts: Posts.find().fetch()
+      posts: Posts.find().fetch(),
+      channels: Channels.find().fetch(),
+      user: Users.findOne('jMNMCaENtAvsjvBhZ')
     };
   },
   render() {
     return(
       <div>
-        <PostForm /><PostList posts={this.data.posts}/>
+        <ChannelList channels={this.data.channels}/>
+        <PostForm user={ this.data.user }/><PostList posts={this.data.posts}/>
       </div>
     )
   }
